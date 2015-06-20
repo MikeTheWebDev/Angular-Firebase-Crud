@@ -10,24 +10,21 @@
  */
 
 
-.constant('FIREBASE_URL', 'https://crackling-inferno-8136.firebaseio.com/')
-  .module('angularCrudApp', [
+  angular.module('angularCrudApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'PostApp',
-    'firebase'
+    'PostApp'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/posts', {
-        templateUrl: 'views/posts/index.html',
-        controller: 'PostsCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+
+    .config(function ($routeProvider) {
+      $routeProvider
+        .when('/', {
+          templateUrl: 'views/posts/index.html',
+          controller: 'PostsCtrl'
+        });
       });
-  });
+
