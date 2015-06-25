@@ -28,7 +28,7 @@ angular
       .when('/posts/:postId', {
         templateUrl: 'views/posts/show.html',
         controller: 'PostsViewCtrl'
-      }),
+      })
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'AuthCtrl',
@@ -37,7 +37,7 @@ angular
             return Auth.resolveUser();
           }
         }
-      }),
+      })
       .otherwise({
         redirectTo: '/'
       });
