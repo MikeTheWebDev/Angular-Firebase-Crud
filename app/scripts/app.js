@@ -2,66 +2,43 @@
 
 /**
  * @ngdoc overview
- * @name angularCrudApp
+ * @name angdashApp
  * @description
- * # angularCrudApp
+ * # angdashApp
  *
  * Main module of the application.
  */
-
-
-  angular.module('angularCrudApp', [
+angular
+  .module('angdashApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'PostApp',
     'firebase'
   ])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
-    .when('/', {
-      // redirect to the notes index
-      redirectTo: '/posts'
-    })
-
-    .when('/users', {
-      templateUrl: 'templates/pages/users/index.html',
-      controller: 'UsersIndexController'
-    })
-
-    .when('/users/:id', {
-      templateUrl: 'templates/pages/users/show.html',
-      controller: 'UsersShowController'
-    })
-
-    .when('/posts', {
-      templateUrl: 'views/posts/index.html',
-      controller: 'PostCtrl'
-    })
-
-    .when('/posts/new', {
-      templateUrl: 'templates/pages/notes/edit.html',
-      controller: 'PostCreateController'
-    })
-
-    .when('/post/:id', {
-      templateUrl: 'views/posts/show.html',
-      controller: 'PostShowController'
-    })
-
-    .when('/posts/:id/edit', {
-      templateUrl: 'templates/pages/notes/edit.html',
-      controller: 'NotesEditController'
-    })
-
-    .when('/profile/edit', {
-      templateUrl: 'templates/pages/profile/edit.html',
-      controller: 'ProfileEditController'
-    })
-
-    .otherwise({redirectTo: '/'});
-}]);
+  .constant('FIREBASE_URL', 'https://crackling-inferno-8136.firebaseio.com/')
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/posts/index.html',
+        controller: 'PostsCtrl'
+      })
+      .when('/posts/:postId', {
+        templateUrl: 'views/posts/show.html',
+        controller: 'PostsViewCtrl'
+      }),
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'AuthCtrl',
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
+      }),
+      .otherwise({
+        redirectTo: '/'
+      });
+  });

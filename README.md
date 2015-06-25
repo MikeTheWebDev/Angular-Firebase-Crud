@@ -1,4 +1,12 @@
-# Angular-Firebase-Crud
-This is an angular social network CRUD application that uses firebase's api for the backend
+# angdash
 
-To start the application, use "grunt serve" or "grunt server" from the command line in the directory you have stored the application.
+This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
+version 0.11.1.
+
+## Build & development
+
+Run `grunt` for building and `grunt serve` for preview.
+
+## Testing
+
+Running `grunt test` will run the unit tests with karma.

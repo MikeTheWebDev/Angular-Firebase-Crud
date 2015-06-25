@@ -12,44 +12,17 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angularCrudApp">
+  <body ng-app="angdashApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <ul class="nav nav-pills" role="tablist">
-              <li role="presentation" class="active"><a href="/#">Home</a></li>
-              <li role="presentation"><a href="/posts">Posts</a></li>
-              <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
-            </ul>
-
-            <a class="navbar-brand" href="#/">angularCrud</a>
-          </div>
-
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    <div ng-include="'views/nav/index.html'"></div>
+    <div class="container" ng-view=""></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -74,15 +47,22 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+    <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- AngularJS -->
+
         <script src="scripts/app.js"></script>
+        <script src="scripts/services/post.js"></script>
+        <script src="scripts/controllers/postsview.js"></script>
         <script src="scripts/controllers/posts.js"></script>
-        <script src="scripts/services/postService.js"></script>
-        <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/filters/url.js"></script>
         <!-- endbuild -->
 </body>
 </html>
