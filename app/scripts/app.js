@@ -29,6 +29,15 @@ angular
         templateUrl: 'views/posts/show.html',
         controller: 'PostsViewCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'AuthCtrl',
+        resolve: {
+          user: function(Auth) {
+            return Auth.resolveUser();
+          }
+        }
+      })
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'AuthCtrl',
